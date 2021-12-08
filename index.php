@@ -102,7 +102,7 @@
                 line += "<td>" + data.mail+ "</td>"
                 line += "<td> <button onClick='showcomments(" + data.id + ");' > comment</button> </td>";
                 line += "</tr>";
-                $("#tbldetail").append(line);
+                $("#tblcomments").append(line);
                 
                 })
             .fail((xhr, status, error) => {
@@ -144,7 +144,6 @@
             $("#detail").hide();
             $("#rowdetail").remove();
         $("#btncomment").click(()=>{
-            $("#detail").show();
             $("#comment").show();
             $("#main").hide();
         });
