@@ -43,23 +43,20 @@
         </table>
     </div>
 
-        <div id="comment">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th> email </th>
-                    </tr>
-                </thead>
-                <tbody id="tblcomments">
-                </tbody>
-            </table>
-        </div>
-
-
-
-
+    <div id="comment">
+        <button >comment</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th> email </th>
+                </tr>
+            </thead>
+            <tbody id="tblcomments">
+            </tbody>
+        </table>
+    </div>
 
 
 </body>
@@ -87,11 +84,10 @@
 
             })
     }
-    function showcomments(id) {
+    function showcomments(loadPosts) {
         $("#main").hide();
-        $("#comment").show();
-        $("#detail").show();
-        var url = "https://jsonplaceholder.typicode.com/comments"+id
+        $("#comment").hide();
+        var url = "https://jsonplaceholder.typicode.com/comments" + loadPosts
         $.getJSON(url)
             .done((data) => {
                 console.log(data);
@@ -100,7 +96,7 @@
                 line += "<td><b>" + data.title + "</b><br/>"
                 line += data.body + "</td>";
                 line += "<td>" + data.mail+ "</td>"
-                line += "<td> <button onClick='showcomments(" + data.id + ");' > comment</button> </td>";
+                line += "<td> <button onClick='showcomments(" + loadPosts.id + ");' > comment </button> </td>";
                 line += "</tr>";
                 $("#tblcomments").append(line);
                 
