@@ -87,7 +87,7 @@
 
             })
     }
-    function showcomments() {
+    function showcomments(id) {
         $("#main").hide();
         $("#comment").show();
         $("#detail").show();
