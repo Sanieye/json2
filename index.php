@@ -44,7 +44,6 @@
     </div>
 
         <div id="comment">
-            <button onClick='showcomments(" + data.id + ");'>comment</button>
             <table>
                 <thead>
                     <tr>
@@ -101,6 +100,7 @@
                 line += "<td><b>" + data.title + "</b><br/>"
                 line += data.body + "</td>";
                 line += "<td>" + data.mail+ "</td>"
+                line += "<td> <button onClick='showcomment(" + data.id + ");' > comment</button> </td>";
                 line += "</tr>";
                 $("#tbldetail").append(line);
                 
