@@ -45,6 +45,7 @@
 
         <div id="comment">
             <button>comment</button>
+
             <table>
                 <thead>
                     <tr>
@@ -88,15 +89,21 @@
 
             })
     }
-    function showcomments(id) {
+    function showcomments(loadpost) {
         $("#main").hide();
+        $("#postId").show();
         $("#detail").show();
         var url = "https://jsonplaceholder.typicode.com/comments";
         $.getJSON(url)
             .done((data) => {
-                console.log(data);
-                
-
+                console.log(Comment.loadPosts);
+                var line = "<tr>";
+                line += "<td>" + Comment.id + "</td>"
+                line += "<td>" + Comment.loadpostid + "</td>"
+                line += "<td><b>" + comment.title + "</b><br/>"
+                line += comment.body + "</td>";
+                line += "<td>" + comment.mail+ "</td>"
+                line += "</tr>";
                 $("#tblPosts").append(line);
                 
                 })
