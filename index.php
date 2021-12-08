@@ -9,6 +9,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+   
 
 
 </head>
@@ -44,17 +45,17 @@
     </div>
 
     <div id="comment">
-        <button >comment</button>
         <table>
-            <thead>
+            <tbody id="btlcomments">
                 <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th> email </th>
-                </tr>
-            </thead>
-            <tbody id="tblcomments">
-            </tbody>
+                   <th>postId</th>
+                   <th>id</th>
+                   <th>name</th>
+                   <th>body</th>
+                   <th>email</th>
+                   <button > comment </button>
+                 </tr>
+             </tbody>
         </table>
     </div>
 
@@ -65,7 +66,7 @@
     function showDetails(id) {
         $("#main").hide();
         $("#detail").show();
-        var url = "https://jsonplaceholder.typicode.com/posts/" + id
+        var url = "https://jsonplaceholder.typicode.com/posts/" + id 
         $.getJSON(url)
             .done((data) => {
                 console.log(data);
@@ -75,28 +76,28 @@
                 line += data.body + "</td>";
                 line += "<td>" + data.userId + "</td>"
                 line += "</tr>";
-                $("#tbldetail").append(line);
-                
+                    $("#tbldetail").append(line);
+                })
 
-            })
             
             .fail((xhr, status, error) => {
 
-            })
+            });
     }
     function showcomments(loadPosts) {
         $("#main").hide();
-        $("#comment").hide();
-        var url = "https://jsonplaceholder.typicode.com/comments" + loadPosts
+        $("#comment").show();
+        var url = "https://jsonplaceholder.typicode.com/posts/comments" + loadPosts
         $.getJSON(url)
             .done((data) => {
-                console.log(data);
-                var line = "<tr>";
-                line += "<td>" + data.id + "</td>"
-                line += "<td><b>" + data.title + "</b><br/>"
-                line += data.body + "</td>";
-                line += "<td>" + data.mail+ "</td>"
-                line += "<td> <button onClick='showcomments(" + loadPosts.id + ");' > comment </button> </td>";
+                console.log(comment);
+                var line = "<tr>"
+                line += "<td>" + comment.postId + "</td>"
+                line += "<td><b>" + comment.id + "</b><br/>"
+                line += "<td>" + comment.name+ "</td>"
+                line += comment.body + "</td>";
+                line += "<td>" +comment.email+ "</td>"
+                line += "<tdonClick='showcomments(" + comment.id + ");' ></td>";
                 line += "</tr>";
                 $("#tblcomments").append(line);
                 
@@ -140,7 +141,7 @@
             $("#detail").hide();
             $("#rowdetail").remove();
         $("#btncomment").click(()=>{
-            $("#comment").show();
+            $("#comments").show();
             $("#main").hide();
         });
 
