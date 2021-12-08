@@ -44,8 +44,7 @@
     </div>
 
         <div id="comment">
-            <button>comment</button>
-
+            <button onClick='showcomments(" + data.id + ");'>comment</button>
             <table>
                 <thead>
                     <tr>
@@ -89,22 +88,21 @@
 
             })
     }
-    function showcomments(loadpost) {
+    function showcomments() {
         $("#main").hide();
-        $("#postId").show();
+        $("#comment").show();
         $("#detail").show();
-        var url = "https://jsonplaceholder.typicode.com/comments";
+        var url = "https://jsonplaceholder.typicode.com/comments"+id
         $.getJSON(url)
             .done((data) => {
-                console.log(Comment.loadPosts);
+                console.log(data);
                 var line = "<tr>";
-                line += "<td>" + Comment.id + "</td>"
-                line += "<td>" + Comment.loadpostid + "</td>"
-                line += "<td><b>" + comment.title + "</b><br/>"
-                line += comment.body + "</td>";
-                line += "<td>" + comment.mail+ "</td>"
+                line += "<td>" + data.id + "</td>"
+                line += "<td><b>" + data.title + "</b><br/>"
+                line += data.body + "</td>";
+                line += "<td>" + data.mail+ "</td>"
                 line += "</tr>";
-                $("#tblPosts").append(line);
+                $("#tbldetail").append(line);
                 
                 })
             .fail((xhr, status, error) => {
@@ -145,7 +143,13 @@
             $("#main").show();
             $("#detail").hide();
             $("#rowdetail").remove();
-        
+        $("#btncomment").click(()=>{
+            $("#detail").show();
+            $("#comment").show();
+            $("#main").hide();
+        });
+
+      
 
         });
 
