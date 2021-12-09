@@ -173,6 +173,7 @@
         loadPosts();
         $("#detail").hide();
         $("#main").show();
+        $("#main2").hide();
             $("#btnBack").click(() => {
             $("#main").show();
             $("#details").remove();
